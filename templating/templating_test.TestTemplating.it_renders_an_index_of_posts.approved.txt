@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My amazing blog!</title>
+  <meta charset="UTF-8"/>
+  <meta name="description" content="Wow, I am really liking this template learning" lang="en"/>
+</head>
+<body>
+<nav role="navigation">
+  <div>
+    <h1>Budding Gopher's blog</h1>
+    <ul>
+      <li><a href="/">home</a></li>
+      <li><a href="about">about</a></li>
+      <li><a href="archive">archive</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+
+<ol><li><a href="/post/hello-world">Hello World</a></li><li><a href="/post/hello-world-2">Hello World 2</a></li></ol>
+
+</main>
+<footer>
+<ul>
+  <li><a href="https://twitter.com/pertrai1">Twitter</a></li>
+  <li><a href="https://facebook.com/pertrai1">Facebook</a></li>
+</ul>
+</footer>
+
