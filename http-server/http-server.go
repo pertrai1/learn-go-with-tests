@@ -1,10 +1,21 @@
-package httpserver
+package main
 
 import (
 	"fmt"
 	"net/http"
+	"strings"
 )
 
 func PlayerServer(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "20")
+	player := strings.TrimPrefix(r.URL.Path, "/players/")
+
+	if player == "Pepper" {
+		fmt.Fprintf(w, "20")
+		return
+	}
+
+	if player == "Rob" {
+		fmt.Fprintf(w, "10")
+		return
+	}
 }
