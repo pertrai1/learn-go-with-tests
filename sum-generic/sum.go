@@ -33,6 +33,15 @@ func Reduce[A, B any](collection []A, accumulator func(B, A) B, initialValue B) 
 	return result
 }
 
+func Find[A any](items []A, predicate func(A) bool) (value A, found bool) {
+	for _, v := range items {
+		if predicate(v) {
+			return v, true
+		}
+	}
+	return
+}
+
 func BalanceFor(transactions []Transaction, name string) float64 {
 	balance := func(current float64, t Transaction) float64 {
 		if t.From == name {
