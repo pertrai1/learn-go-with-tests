@@ -3,17 +3,22 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 )
 
-type InMemoryPlayerStore struct{}
-
-func (i *InMemoryPlayerStore) GetPlayerScore(name string) int {
-	return 123
-}
-
-func (i *InMemoryPlayerStore) RecordWin(name string) {}
+const dbFileName = "game.db.json"
 
 func main() {
-	server := &PlayerServer{&InMemoryPlayerStore{}}
-	log.Fatal(http.ListenAndServe(":5001", server))
+	db, err := os.OpenFile(dbFileName, os.O_RDWR|os.O_CREATE, 0666)
+
+	if err != nil {
+		log.Fatalf("problem opening %s %v", dbFileName, err)
+	}
+
+	store := NewFileSystemPlayerStore(db)
+	server := NewPlayerServer(store)
+
+	if err := http.ListenAndServe(":5001", server); err != nil {
+		log.Fatalf("could not listen on port 5001 %v", err)
+	}
 }
